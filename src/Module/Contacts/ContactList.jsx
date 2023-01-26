@@ -22,10 +22,6 @@ const ContactList = ({ contacts, onDeleteContact }) => {
   );
 };
 
-ContactList.defaultProps = {
-  contacts: [],
-};
-
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({

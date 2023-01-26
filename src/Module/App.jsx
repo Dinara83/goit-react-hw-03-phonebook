@@ -10,9 +10,25 @@ import css from './App.module.css';
 
 class App extends Component {
   state = {
+    // contacts: [],
     contacts: initialContacts,
     filter: '',
   };
+
+  componentDidMount() {
+    const contacts = JSON.parse(localStorage.getItem('my contacts'));
+    if (contacts?.length) {
+      // contacts && contacts.length
+      this.setState({ contacts });
+    }
+  }
+
+  componentDidUpdate(prevState) {
+    const { contacts } = this.state;
+    if (prevState.contacts.length !== contacts.length) {
+      localStorage.setItem('my contacts', JSON.stringify(contacts));
+    }
+  }
 
   removeContact = id => {
     this.setState(prevState => ({
@@ -72,6 +88,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('Render');
     const contacts = this.getfilterContacts();
     const { addFormSubmitContact, changeFilter, removeContact } = this;
 
