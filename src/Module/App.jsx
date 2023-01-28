@@ -87,7 +87,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('Render');
     const contacts = this.getfilterContacts();
     const { addFormSubmitContact, changeFilter, removeContact } = this;
 
